@@ -1,37 +1,45 @@
-package com.qualitest.lava.pageobjects;
+package com.qualitest.lava;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import com.qualitest.lava.pageobjects.FacebookLoginScreen;
+import com.qualitest.lava.pageobjects.GooglePlayStore;
+import com.qualitest.lava.pageobjects.PlaystoreSearchResultPage;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 
-public class BaseClass {
+public class TestSessionInitiator {
 
     AndroidDriver driver;
-    public facebookLoginScreen FBLoginScreen;
+    public FacebookLoginScreen FBLoginScreen;
+    public GooglePlayStore googleplaystore;
+    public PlaystoreSearchResultPage playstoreSearchResultPage;
 
-    public BaseClass() throws MalformedURLException {
+    public TestSessionInitiator() throws MalformedURLException {
         this.driver = driverInit();
-        FBLoginScreen = new facebookLoginScreen(driver);
+        FBLoginScreen = new FacebookLoginScreen(this.driver);
+        googleplaystore = new GooglePlayStore(this.driver);
+        playstoreSearchResultPage = new PlaystoreSearchResultPage(this.driver);
     }
 
     private AndroidDriver driverInit() throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("appium:deviceName", "ZF6222CSTS");
-        desiredCapabilities.setCapability("appium:appPackage", "com.facebook.katana");
-        desiredCapabilities.setCapability("appium:appActivity", "LoginActivity");
-        desiredCapabilities.setCapability("appium:ensureWebviewsHavePages", true);
+        // desiredCapabilities.setCapability("appium:ensureWebviewsHavePages", true);
         desiredCapabilities.setCapability("appium:nativeWebScreenshot", true);
         desiredCapabilities.setCapability("appium:newCommandTimeout", 3600);
-        desiredCapabilities.setCapability("appium:connectHardwareKeyboard", true);
+        // desiredCapabilities.setCapability("appium:connectHardwareKeyboard", false);
 
         URL remoteUrl = new URL("http://localhost:4723/wd/hub");
         this.driver = new AndroidDriver(remoteUrl, desiredCapabilities);
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         return driver;
 
     }

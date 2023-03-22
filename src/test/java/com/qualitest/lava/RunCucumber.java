@@ -9,5 +9,5 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(plugin = {
         "pretty",
         "html:target/cucumber/report.html" }, features = "classpath:features")
-public class RunCucumberTest {
+public class RunCucumber {
 }

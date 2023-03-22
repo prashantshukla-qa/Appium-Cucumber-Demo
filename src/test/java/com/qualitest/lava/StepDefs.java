@@ -2,8 +2,6 @@ package com.qualitest.lava;
 
 import java.net.MalformedURLException;
 
-import com.qualitest.lava.pageobjects.BaseClass;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,11 +9,11 @@ import io.cucumber.java.en.When;
 
 public class StepDefs {
 
-    BaseClass test;
+    TestSessionInitiator test;
 
     @Before
     public void setup() throws MalformedURLException{
-        test = new BaseClass(); 
+        test = new TestSessionInitiator(); 
     }
 
     @Given("I have launched the facebook app")

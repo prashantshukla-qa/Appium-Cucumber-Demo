@@ -1,51 +1,46 @@
 package com.qualitest.lava.pageobjects;
 
 import io.appium.java_client.android.AndroidDriver;
-import java.time.Duration;
+import java.util.List;
+
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class facebookLoginScreen {
+public class FacebookLoginScreen extends BasePage {
 
-    AndroidDriver driver;
+    private AndroidDriver driver;
 
-    // @AndroidBy(xpath = "//android.view.View[@content-desc='Mobile number or
-    // email']/../android.widget.EditText")
-    // private AndroidElement input_UserName;
+    @AndroidFindBy(xpath = "//android.widget.EditText")
+    private List<WebElement> input_credentials_field;
 
-    // @AndroidBy(xpath = "")
-    // private AndroidElement input_Password;
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Log in']")
+    private WebElement button_Login;
 
-    facebookLoginScreen(AndroidDriver driver) {
+    public FacebookLoginScreen(AndroidDriver driver) {
+        super(driver);
         this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
     }
 
     public void enterUserNameAndPassword(String username, String Password) {
 
-        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(30));
-
         wait.until(ExpectedConditions.presenceOfElementLocated(getInputUserNameTextField()));
 
-        System.out.println(this.driver.findElement(getInputUserNameTextField()).getSize());
-        this.driver.findElements(getInputFields()).get(0).sendKeys(username);
-        this.driver.findElements(getInputFields()).get(1).sendKeys(Password);
-        this.driver.findElement(getLoginButton()).click();
+        input_credentials_field.get(0).sendKeys(username);
+        input_credentials_field.get(1).sendKeys(Password);
+
+        button_Login.click();
 
         System.out.println("entered passowrd :- ".toUpperCase() + Password);
     }
 
     private By getInputUserNameTextField() {
         return By.xpath("//android.view.View[@content-desc='Mobile number or email']");
-    }
-
-    private By getInputFields(){
-        return By.xpath("//android.widget.EditText");
-    }
-
-    private By getLoginButton(){
-        return By.xpath("//android.widget.Button[@content-desc='Log in']");
     }
 
 }
