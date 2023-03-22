@@ -8,6 +8,6 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = {
         "pretty",
-        "html:target/cucumber/report.html" }, features = "classpath:features/")
+        "html:target/cucumber/report.html" }, features = "classpath:features")
 public class RunCucumberTest {
 }
