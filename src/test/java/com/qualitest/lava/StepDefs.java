@@ -5,33 +5,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepDefs {
-
-    @Given("I am on the application Landing Page")
-    public void i_am_on_the_application_landing_page() {
+    @Given("I have launched the facebook app")
+    public void i_have_launched_the_facebook_app() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
 
-    @When("I Navigate to the Sign In Page")
-    public void i_navigate_to_the_sign_in_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @When("I enter the username as {string}")
-    public void i_enter_the_username_as(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @When("I enter the password as {string}")
-    public void i_enter_the_password_as(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @When("I click the Sign In Button")
-    public void i_click_the_sign_in_button() {
+    @When("I try to login using {string} and {string}")
+    public void i_try_to_login_using_and(String string, String string2) {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
