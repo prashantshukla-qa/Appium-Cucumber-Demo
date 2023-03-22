@@ -22,6 +22,14 @@
             <version>8.3.0</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+
+
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -53,6 +61,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                     <properties>
                     </properties>
                 </configuration>

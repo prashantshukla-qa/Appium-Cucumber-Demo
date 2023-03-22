@@ -1,29 +1,48 @@
 package com.qualitest.lava.pageobjects;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.Activity;
+import io.appium.java_client.android.AndroidDriver;
 
 public class BaseClass {
 
-    
+    AndroidDriver driver;
+    public facebookLoginScreen FBLoginScreen;
 
-    // public BaseClass() {
-    //     this.driver = new ChromeDriver();
-    // }
+    public BaseClass() throws MalformedURLException {
+        this.driver = driverInit();
+        FBLoginScreen = new facebookLoginScreen(driver);
+    }
 
-    // public WebDriver getDriver() {
-    //     return this.driver;
-    // }
+    private AndroidDriver driverInit() throws MalformedURLException {
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        desiredCapabilities.setCapability("platformName", "Android");
+        desiredCapabilities.setCapability("appium:deviceName", "ZF6222CSTS");
+        desiredCapabilities.setCapability("appium:appPackage", "com.facebook.katana");
+        desiredCapabilities.setCapability("appium:appActivity", "LoginActivity");
+        desiredCapabilities.setCapability("appium:ensureWebviewsHavePages", true);
+        desiredCapabilities.setCapability("appium:nativeWebScreenshot", true);
+        desiredCapabilities.setCapability("appium:newCommandTimeout", 3600);
+        desiredCapabilities.setCapability("appium:connectHardwareKeyboard", true);
 
-    // public void launchApplication() {
-    //     launchApplication("https://the-internet.herokuapp.com/");
-    // }
+        URL remoteUrl = new URL("http://localhost:4723/wd/hub");
+        this.driver = new AndroidDriver(remoteUrl, desiredCapabilities);
+        return driver;
 
-    // public void launchApplication(String url) {
-    //     this.driver.get(url);
-    // }    
+    }
 
-    // public void closeTestSession() {
-    //     this.driver.quit();
-    // }
-    
+    public AppiumDriver getDriver() {
+        return this.driver;
+    }
+
+    public void launchApplication() {
+        Activity activity = new Activity("com.facebook.katana", "LoginActivity");
+        this.driver.startActivity(activity);
+    }
+
 }
