@@ -20,7 +20,7 @@ public class StepDefs {
 
     @Given("I have launched the facebook app")
     public void i_have_launched_the_facebook_app() {
-        test.launchApplication();
+        test.FBLoginScreen.launchFacebookApplication();
     }
 
     @When("I try to login using {string} and {string}")

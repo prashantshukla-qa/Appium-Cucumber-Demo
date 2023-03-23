@@ -1,5 +1,6 @@
 package com.qualitest.lava.pageobjects;
 
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import java.util.List;
 
@@ -33,22 +34,24 @@ public class FacebookLoginScreen extends BasePage {
         PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
     }
 
+    public void launchFacebookApplication() {
+        Activity activity = new Activity("com.facebook.katana", "LoginActivity");
+        this.driver.startActivity(activity);
+    }
+
     public void enterUserNameAndPassword(String username, String Password) {
 
         wait.until(ExpectedConditions.presenceOfElementLocated(getInputUserNameTextField()));
-
         input_credentials_field.get(0).sendKeys(username);
         input_credentials_field.get(1).sendKeys(Password);
-
         button_Login.click();
     }
 
-
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         return errorMessage.get(0).getText();
     }
 
-    public WebElement getProfileIcon(){
+    public WebElement getProfileIcon() {
         return profileIcon;
     }
 
