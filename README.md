@@ -9,7 +9,7 @@ There are three test in the demo:
 To run the test use following command
 
 ```
-$> mvn clean test -Dtest=_TestName_
+$> mvn clean test -Dtest=<TestName>
 ```
 ## Tests Covered
 
