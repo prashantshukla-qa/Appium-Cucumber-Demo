@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class InstallFacebookTest {
+public class InstallAndUninstallFacebookTest {
 
     TestSessionInitiator test;
 

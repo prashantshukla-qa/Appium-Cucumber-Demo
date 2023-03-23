@@ -2,6 +2,8 @@ package com.qualitest.lava;
 
 import java.net.MalformedURLException;
 
+import org.testng.Assert;
+
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -26,10 +28,14 @@ public class StepDefs {
         test.FBLoginScreen.enterUserNameAndPassword(userName, password);
     }
 
-    @Then("I should see the message {string}")
-    public void i_should_see_the_message(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("I should see Profile Icon")
+    public void i_should_see_the_message() {
+        Assert.assertTrue(test.FBLoginScreen.getProfileIcon().isEnabled());
+    }
+
+    @Then("I should see the error {string}")
+    public void i_should_see_the_message(String errorMessage) {
+        Assert.assertEquals(test.FBLoginScreen.getErrorMessage(), errorMessage);
     }
 
 }

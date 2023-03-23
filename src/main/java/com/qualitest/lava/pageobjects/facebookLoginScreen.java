@@ -21,6 +21,12 @@ public class FacebookLoginScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Log in']")
     private WebElement button_Login;
 
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Go to profile']")
+    private WebElement profileIcon;
+
+    @AndroidFindBy(className = "android.widget.TextView")
+    private List<WebElement> errorMessage;
+
     public FacebookLoginScreen(AndroidDriver driver) {
         super(driver);
         this.driver = driver;
@@ -35,8 +41,15 @@ public class FacebookLoginScreen extends BasePage {
         input_credentials_field.get(1).sendKeys(Password);
 
         button_Login.click();
+    }
 
-        System.out.println("entered passowrd :- ".toUpperCase() + Password);
+
+    public String getErrorMessage(){
+        return errorMessage.get(0).getText();
+    }
+
+    public WebElement getProfileIcon(){
+        return profileIcon;
     }
 
     private By getInputUserNameTextField() {

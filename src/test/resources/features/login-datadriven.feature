@@ -4,12 +4,12 @@ Feature: User Authentication
   I want to be able to sign in
   So that I can access my account
 
-  @datadriven
-  Scenario Outline: testing login feature
+  Scenario: Test login feature correct login
     Given I have launched the facebook app
-    When I try to login using "<username>" and "<password>"
-    Then I should see the message "<expectedmessage>"
+    When I try to login using "test.qualitest.demo@gmail.com" and "Qait@123"
+    Then I should see Profile Icon
 
-    Examples:
-      | username          | password             | expectedmessage                |
-      | tomsmith@test.com | SuperSecretPassword! | You logged into a secure area! |
+    Scenario: Facebook Throws error on using incorrect login
+    Given I have launched the facebook app
+    When I try to login using "test.qualitest.demo@gmail.com" and "Qait@123"
+    Then I should see the error "Invalid username or password"
