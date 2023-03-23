@@ -16,7 +16,7 @@ $> mvn clean test -Dtest=_TestName_
 ### InstallAndUninstallFacebookTest.java
 Pre-Requisite: A device with facebook app installed
 
-Tests
+Tests:
 1. Uninstall Facebook from google playstore
 1. Install Facebook from google playstore
 
