@@ -12,7 +12,6 @@ import com.qualitest.lava.pageobjects.PhoneCallAndSms;
 import com.qualitest.lava.pageobjects.PlaystoreSearchResultPage;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 
 public class TestSessionInitiator {
