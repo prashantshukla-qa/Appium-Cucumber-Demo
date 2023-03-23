@@ -10,3 +10,24 @@ To run the test use following command
 
 ```
 $> mvn clean test -Dtest=_TestName_
+
+## Tests Covered
+
+### InstallAndUninstallFacebookTest.java
+Pre-Requisite: A device with facebook app installed
+
+Tests
+1. Uninstall Facebook from google playstore
+1. Install Facebook from google playstore
+
+### MakeCallAndSmsTest.java
+Tests:
+1. testImeiNumbers : Get IMEI numbers and validate
+1. testCallWithoutNetwork : Make a call without sim and verify error message
+1. testNotifications : Open notification panel and print all the notification headers
+
+### Facebook Login Test
+
+Tests:
+1. Login to facebook using incorrect credentials
+1. Login to facebook using correct credentials (WIP)
