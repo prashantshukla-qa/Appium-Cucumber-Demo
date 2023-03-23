@@ -36,7 +36,6 @@ public class TestSessionInitiator {
         desiredCapabilities.setCapability("appium:deviceName", "ZF6222CSTS");
         desiredCapabilities.setCapability("appium:nativeWebScreenshot", true);
         desiredCapabilities.setCapability("appium:newCommandTimeout", 3600);
-        desiredCapabilities.setCapability("fullReset", "true");
 
         URL remoteUrl = new URL("http://localhost:4723/wd/hub");
         this.driver = new AndroidDriver(remoteUrl, desiredCapabilities);
