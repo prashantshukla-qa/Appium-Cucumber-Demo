@@ -25,7 +25,7 @@ public class InstallAndUninstallFacebookTest {
 
     @Test(dependsOnMethods = "TC01_UninstallFacebookApp")
     public void TC02_installFacebookFromGoogleService() {
-        test.googleplaystore.launchGooglePlayStore().searchForApplication("Facebook").uninstallApplication();
+        test.googleplaystore.launchGooglePlayStore().searchForApplication("Facebook").installApplication();
 
         Assert.assertTrue(test.playstoreSearchResultPage.getOpenButton().isEnabled(),
                 "Open button is not enabled after installation");
