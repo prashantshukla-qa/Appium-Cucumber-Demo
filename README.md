@@ -10,7 +10,7 @@ To run the test use following command
 
 ```
 $> mvn clean test -Dtest=_TestName_
-
+```
 ## Tests Covered
 
 ### InstallAndUninstallFacebookTest.java
