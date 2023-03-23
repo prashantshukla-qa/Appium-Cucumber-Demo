@@ -15,11 +15,11 @@ public class MakeCallAndSmsTest {
     TestSessionInitiator test;
 
     @BeforeTest
-    public void setupFacebookTest() throws MalformedURLException {
+    public void setupMobileTests() throws MalformedURLException {
         test = new TestSessionInitiator();
     }
 
-    // @Test
+    @Test
     public void testImeiNumbers() throws IOException, InterruptedException {
         SortedSet<String> actualNumbers = test.phoneCallAndSms.launchCallDialer().getIMEInumber();
 
@@ -35,7 +35,7 @@ public class MakeCallAndSmsTest {
     }
 
 
-    // @Test
+    @Test
     public void testCallWithoutNetwork() throws IOException, InterruptedException{
         test.phoneCallAndSms.launchCallDialer().makePhoneCall("+919811052762", 10);
         Assert.assertEquals(test.phoneCallAndSms.getNetworkMessage(), "Cellular network not available for voice calls.");
